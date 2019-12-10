@@ -1,0 +1,10 @@
+@import '../../../../../styles/global.scss';
+.scheduler-table {
+  &__header {
+    border-bottom: 1px solid $light-shade;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+  &__columns {
+  }
+}

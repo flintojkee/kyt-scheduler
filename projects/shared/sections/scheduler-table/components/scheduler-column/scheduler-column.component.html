@@ -1,0 +1,6 @@
+<h4>
+  {{ column.title }}
+</h4>
+<div *ngFor="let row of column.rows">
+  <kyt-scheduler-row [row]="row"></kyt-scheduler-row>
+</div>

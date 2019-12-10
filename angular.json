@@ -12,7 +12,7 @@
       },
       "root": "projects/kyt-scheduler-admin",
       "sourceRoot": "projects/kyt-scheduler-admin/src",
-      "prefix": "app",
+      "prefix": "kyt-admin",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -27,9 +27,7 @@
               "projects/kyt-scheduler-admin/src/favicon.ico",
               "projects/kyt-scheduler-admin/src/assets"
             ],
-            "styles": [
-              "projects/kyt-scheduler-admin/src/styles.scss"
-            ],
+            "styles": ["projects/kyt-scheduler-admin/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -92,9 +90,7 @@
               "projects/kyt-scheduler-admin/src/favicon.ico",
               "projects/kyt-scheduler-admin/src/assets"
             ],
-            "styles": [
-              "projects/kyt-scheduler-admin/src/styles.scss"
-            ],
+            "styles": ["projects/kyt-scheduler-admin/src/styles.scss"],
             "scripts": []
           }
         },
@@ -106,9 +102,7 @@
               "projects/kyt-scheduler-admin/tsconfig.spec.json",
               "projects/kyt-scheduler-admin/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -134,7 +128,7 @@
       },
       "root": "projects/kyt-scheduler-user",
       "sourceRoot": "projects/kyt-scheduler-user/src",
-      "prefix": "app",
+      "prefix": "kyt-user",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -149,9 +143,7 @@
               "projects/kyt-scheduler-user/src/favicon.ico",
               "projects/kyt-scheduler-user/src/assets"
             ],
-            "styles": [
-              "projects/kyt-scheduler-user/src/styles.scss"
-            ],
+            "styles": ["projects/kyt-scheduler-user/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -214,9 +206,7 @@
               "projects/kyt-scheduler-user/src/favicon.ico",
               "projects/kyt-scheduler-user/src/assets"
             ],
-            "styles": [
-              "projects/kyt-scheduler-user/src/styles.scss"
-            ],
+            "styles": ["projects/kyt-scheduler-user/src/styles.scss"],
             "scripts": []
           }
         },
@@ -228,9 +218,7 @@
               "projects/kyt-scheduler-user/tsconfig.spec.json",
               "projects/kyt-scheduler-user/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -246,6 +234,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "kyt-scheduler-admin"
+    }
+  },
+  "defaultProject": "kyt-scheduler-admin",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
