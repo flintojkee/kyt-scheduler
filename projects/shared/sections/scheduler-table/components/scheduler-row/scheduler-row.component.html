@@ -1,1 +1,11 @@
-<p>scheduler-row works!</p>
+<div class="scheduler-row fw" [class.scheduler-row__odd]="isOdd">
+  <h4 *ngIf="columnId === -1">{{ row.data.start_time }} - {{ row.data.end_time }}</h4>
+  <div class="scheduler-row__content fw" (click)="select(row)" *ngIf="columnId !== -1">
+    <img
+      class="scheduler-row__image"
+      src="assets/images/open.png"
+      alt="open for enroll"
+      title="Enroll"
+    />
+  </div>
+</div>

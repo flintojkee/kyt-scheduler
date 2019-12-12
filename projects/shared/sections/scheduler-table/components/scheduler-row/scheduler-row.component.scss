@@ -1,0 +1,29 @@
+@import '../../../../../styles/global.scss';
+.scheduler-row {
+  border-bottom: 1px solid $light-shade;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  &__content {
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      background-color: $light-shade;
+      .scheduler-row__image {
+        transform: rotate(7deg);
+      }
+    }
+  }
+  &__odd {
+    background-color: #eee;
+  }
+  .scheduler-row__image {
+    height: 50px;
+    transition: 0.3s ease-in-out;
+  }
+}

@@ -1,16 +1,16 @@
-import { Repetition } from '@kyt/shared/models';
-
-export interface SchedulerRow extends Repetition {
-  row_id: number;
-}
-export interface SchedulerColumn {
-  column_id: number;
+export interface SchedulerRow<T = any> {
+  id: number;
   title: string;
-  date?: string | Date;
-  rows: SchedulerRow[];
+  data?: T;
 }
-export interface SchedulerTable {
+export interface SchedulerColumn<T = any> {
+  id: number;
+  title: string;
+  date?: Date;
+  rows: SchedulerRow<T>[];
+}
+export interface SchedulerTable<T = any> {
   today: Date | string;
   title: string;
-  columns: SchedulerColumn[];
+  columns: SchedulerColumn<T>[];
 }

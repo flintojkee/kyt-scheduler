@@ -1,46 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { SchedulerTable } from '@kyt/shared/sections/scheduler-table';
-import { Observable, of } from 'rxjs';
+import { StateService } from './store/state.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'kyt-admin-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   title = 'kyt-scheduler-admin';
-  table$: Observable<SchedulerTable>;
-
+  constructor(private stateService: StateService) {}
   ngOnInit() {
-    this.table$ = of({
-      today: new Date(),
-      title: 'Kyt Scheduler',
-      columns: [
-        {
-          column_id: 0,
-          title: 'Monday',
-          rows: []
-        },
-        {
-          column_id: 1,
-          title: 'Tuesday',
-          rows: []
-        },
-        {
-          column_id: 2,
-          title: 'Wednesday',
-          rows: []
-        },
-        {
-          column_id: 3,
-          title: 'Thursday',
-          rows: []
-        },
-        {
-          column_id: 3,
-          title: 'Friday',
-          rows: []
-        }
-      ]
+    this.stateService.state$.subscribe((res) => {
+      console.log(res);
     });
   }
 }

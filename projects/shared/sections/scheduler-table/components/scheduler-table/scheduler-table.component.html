@@ -1,8 +1,9 @@
-<div *ngIf="table$ | async as table">
-  <h3 class="scheduler-table__header">{{ table.title }}</h3>
+<div class="scheduler-table">
+  <h2 class="scheduler-table__header">{{ table.title }}</h2>
   <div class="scheduler-table__columns fw">
     <div class="scheduler-table__column" *ngFor="let column of table.columns">
-      <kyt-scheduler-column [column]="column"> </kyt-scheduler-column>
+      <kyt-scheduler-column (selectedRow)="selectRow($event)" [column]="column">
+      </kyt-scheduler-column>
     </div>
   </div>
 </div>

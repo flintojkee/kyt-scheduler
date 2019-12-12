@@ -1,4 +1,7 @@
-export interface Repetition {
+import { IUser } from './user.model';
+import { IAdmin } from './admin.model';
+
+export interface IRepetition {
   room_number: number;
   date: string | Date;
   user_id: number;
@@ -7,4 +10,6 @@ export interface Repetition {
   admin_id: number;
   number_of_people: number;
   approved: boolean;
+  user?: IUser;
+  admin?: IAdmin;
 }

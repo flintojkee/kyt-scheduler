@@ -1,6 +1,21 @@
-<h4>
-  {{ column.title }}
-</h4>
-<div *ngFor="let row of column.rows">
-  <kyt-scheduler-row [row]="row"></kyt-scheduler-row>
+<div class="scheduler-column">
+  <h4
+    class="scheduler-column__header scheduler-column__header--today"
+    *ngIf="isToday; else notToday"
+  >
+    Today
+  </h4>
+  <ng-template #notToday>
+    <h4 class="scheduler-column__header">
+      {{ column.date | date: 'E MMM d' }}
+    </h4>
+  </ng-template>
+
+  <div class="scheduler-column__row" *ngFor="let row of column.rows">
+    <kyt-scheduler-row
+      (selected)="selectRow($event)"
+      [columnId]="column.id"
+      [row]="row"
+    ></kyt-scheduler-row>
+  </div>
 </div>

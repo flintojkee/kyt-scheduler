@@ -1,0 +1,14 @@
+@import '../../../../../styles/global.scss';
+.scheduler-column {
+  &__header {
+    height: 40px;
+    padding-top: 15px;
+    text-align: center;
+    &--today {
+      color: $primary;
+    }
+  }
+  &__row {
+    height: 70px;
+  }
+}
