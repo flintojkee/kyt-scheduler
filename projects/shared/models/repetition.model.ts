@@ -3,7 +3,7 @@ import { IAdmin } from './admin.model';
 
 export interface IRepetition {
   room_number: number;
-  date: string | Date;
+  date: Date;
   user_id: number;
   start_time: Date | string;
   end_time: Date | string;

@@ -1,6 +1,9 @@
+<kyt-user-header *ngIf="user" [user]="user"></kyt-user-header>
+
 <ng-container *ngIf="table$ | async as table">
   <kyt-scheduler-table
     (selectedRow)="showEnrollPopup($event)"
     [table]="table"
   ></kyt-scheduler-table>
 </ng-container>
+<kyt-user-user-popup></kyt-user-user-popup>

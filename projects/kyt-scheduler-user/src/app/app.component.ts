@@ -10,7 +10,8 @@ export class AppComponent implements OnInit {
   constructor(private stateService: StateService) {}
   ngOnInit() {
     this.stateService.state$.subscribe((res) => {
-      console.log(res);
+      console.log(this.stateService.state);
+      //console.log(res);
     });
   }
 }

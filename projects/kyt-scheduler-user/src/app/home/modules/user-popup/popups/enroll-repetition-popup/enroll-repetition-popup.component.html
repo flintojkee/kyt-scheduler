@@ -1,0 +1,18 @@
+<kyt-popup-core [closable]="true" (popupClose)="closePopup()">
+  <h3 popup-header>Enroll repetition</h3>
+  <div class="create-album-popup__body" popup-body>
+    <p>User: {{ inputData.user.first_name }} {{ inputData.user.last_name }}</p>
+    <p>Room: {{ inputData.row.data.room_number }}</p>
+    <p>Time: {{ inputData.row.data.start_time }} - {{ inputData.row.data.end_time }}</p>
+  </div>
+  <div class="create-album-popup__footer" popup-footer>
+    <div class="create-album-popup__buttons-wrapper fw">
+      <div class="create-album-popup__button-wrapper">
+        <kyt-button (clicked)="closePopup()">Cancel</kyt-button>
+      </div>
+      <div class="create-album-popup__button-wrapper">
+        <kyt-button (clicked)="submitPopup()" [color]="'primary'">Enroll</kyt-button>
+      </div>
+    </div>
+  </div>
+</kyt-popup-core>

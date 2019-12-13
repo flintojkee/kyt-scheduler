@@ -1,0 +1,36 @@
+@import '../../../../../../styles/global.scss';
+.login,
+.signup,
+.reset-password {
+  max-width: 400px;
+  &__header {
+    margin-bottom: 15px;
+  }
+  &__input {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    &-wrapper {
+      margin-bottom: 30px;
+    }
+  }
+  &__subheader {
+    font-size: 13px;
+    color: $medium;
+    margin-bottom: 40px;
+  }
+  &__utils {
+    &-wrapper {
+      margin-bottom: 35px;
+      align-items: center;
+    }
+  }
+  &__buttons {
+    &-wrapper {
+      margin-bottom: 30px;
+    }
+  }
+  &__question {
+    color: $medium;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="dropdown-menu">
+  <div id="toggle" class="dropdown-menu__toggle">
+    <ng-template [ngTemplateOutlet]="toggleRef"> </ng-template>
+  </div>
+  <div *ngIf="open" class="dropdown-menu__content">
+    <ng-template [ngTemplateOutlet]="contentRef"> </ng-template>
+  </div>
+</div>

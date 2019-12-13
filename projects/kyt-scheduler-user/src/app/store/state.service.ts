@@ -14,10 +14,10 @@ export interface StateEntry {
 })
 export class StateService {
   constructor() {}
-
+  private _state = new BehaviorSubject({});
   private stateSubject = new BehaviorSubject({});
   get state() {
-    return this.stateSubject.value;
+    return this._state.value;
   }
   private initialState: StateObject = {
     app: 'Kyt scheduler admin'
@@ -40,5 +40,6 @@ export class StateService {
     this.stateSubject.next({
       [obj.key]: obj.payload
     });
+    this._state.next({ ...this._state.value, [obj.key]: obj.payload });
   }
 }

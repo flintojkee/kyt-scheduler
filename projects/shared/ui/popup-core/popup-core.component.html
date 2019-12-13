@@ -1,0 +1,22 @@
+<div class="popup fw">
+  <div class="popup__container">
+    <div class="popup__header" *ngIf="closable">
+      <div class="container">
+        <ng-content select="[popup-header]"></ng-content>
+        <div class="popup__close-wrapper" (click)="closePopup()">
+          <i class="icn icn--close popup__close"></i>
+        </div>
+      </div>
+    </div>
+    <div class="popup__body">
+      <div class="container">
+        <ng-content select="[popup-body]"></ng-content>
+      </div>
+    </div>
+    <div class="popup__footer">
+      <div class="container">
+        <ng-content select="[popup-footer]"> </ng-content>
+      </div>
+    </div>
+  </div>
+</div>

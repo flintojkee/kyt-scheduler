@@ -101,6 +101,7 @@ export class SchedulerService {
     const scheduler: SchedulerTable<IRepetition> = {
       today: new Date(),
       title: 'KУT Scheduler',
+      room_number: roomNumber,
       columns: []
     };
     const columns = this.getEmptySchedulerColumns(date);

@@ -13,4 +13,5 @@ export interface SchedulerTable<T = any> {
   today: Date | string;
   title: string;
   columns: SchedulerColumn<T>[];
+  room_number: number;
 }

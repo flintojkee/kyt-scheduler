@@ -1,5 +1,8 @@
 <div class="scheduler-table">
-  <h2 class="scheduler-table__header">{{ table.title }}</h2>
+  <h2 class="scheduler-table__header fw">
+    <span>{{ table.title }}</span>
+    <span>Room {{ table.room_number }}</span>
+  </h2>
   <div class="scheduler-table__columns fw">
     <div class="scheduler-table__column" *ngFor="let column of table.columns">
       <kyt-scheduler-column (selectedRow)="selectRow($event)" [column]="column">
