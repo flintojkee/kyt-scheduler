@@ -30,13 +30,18 @@ export class HomeStoreService {
   }
   dispatchSchedulerRow(row: SchedulerRow<IRepetition>) {
     const scheduler: SchedulerTable<IRepetition> = this.stateService.state['scheduler'];
-    console.log(this.stateService.state);
     scheduler.columns.map((c) => {
-      c.rows.map((r, index) => {
-        if (r.data.date.toTimeString() === row.data.date.toTimeString()) {
-          c.rows.splice(index, 1, row);
-        }
-      });
+      if (c.id !== -1) {
+        c.rows.map((r, index) => {
+          if (
+            new Date(r.data.date).toDateString() === new Date(row.data.date).toDateString() &&
+            r.data.start_time === row.data.start_time &&
+            r.data.end_time === row.data.end_time
+          ) {
+            c.rows.splice(index, 1, row);
+          }
+        });
+      }
     });
     this.dispatchScheduler(scheduler);
   }

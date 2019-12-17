@@ -7,6 +7,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { SchedulerRow } from '../../models/scheduler-table.model';
+import { IRepetition, RepetitionStatus } from '@kyt/shared/models';
 
 @Component({
   selector: 'kyt-scheduler-row',
@@ -15,10 +16,11 @@ import { SchedulerRow } from '../../models/scheduler-table.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SchedulerRowComponent implements OnInit {
-  @Input() row: SchedulerRow;
+  @Input() row: SchedulerRow<IRepetition>;
   @Input() columnId: number;
   @Output() selected = new EventEmitter<SchedulerRow>();
   isOdd: boolean;
+  repetitionStatus = RepetitionStatus;
   constructor() {}
 
   ngOnInit() {

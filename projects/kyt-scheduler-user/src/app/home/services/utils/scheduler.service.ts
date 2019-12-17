@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SchedulerTable, SchedulerColumn } from '@kyt/shared/sections/scheduler-table';
-import { IRepetition } from '@kyt/shared/models';
+import { IRepetition, RepetitionStatus } from '@kyt/shared/models';
 @Injectable({
   providedIn: 'root'
 })
@@ -122,7 +122,8 @@ export class SchedulerService {
           date: column.date,
           room_number: roomNumber,
           start_time: row.title.split('-')[0],
-          end_time: row.title.split('-')[1]
+          end_time: row.title.split('-')[1],
+          approved: RepetitionStatus.open
         }
       };
       rows.push(r);

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SchedulerTable, SchedulerRow } from '@kyt/shared/sections/scheduler-table';
 import { IRepetition, IUser } from '@kyt/shared/models';
@@ -13,7 +13,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  table$: Observable<SchedulerTable<IRepetition>>;
+  table: SchedulerTable<IRepetition>;
   user: IUser;
 
   constructor(
@@ -22,12 +22,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.table$ = this.homeStoreService.getSchedulerState();
+    this.homeStoreService
+      .getSchedulerState()
+      .pipe(untilDestroyed(this))
+      .subscribe((table) => {
+        if (table) {
+          this.table = JSON.parse(JSON.stringify(table));
+        }
+      });
+
     this.homeStoreService
       .getUserState()
       .pipe(untilDestroyed(this))
       .subscribe((user) => {
-        this.user = user;
+        this.user = { ...user };
       });
   }
 

@@ -4,9 +4,12 @@ import {
   ChangeDetectionStrategy,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  OnChanges
 } from '@angular/core';
-import { SchedulerColumn, SchedulerRow } from '../../models/scheduler-table.model';
+import { SchedulerColumn, SchedulerRow, SchedulerTable } from '../../models/scheduler-table.model';
+import { Observable } from 'rxjs';
+import { IRepetition } from '@kyt/shared/models';
 
 @Component({
   selector: 'kyt-scheduler-column',
@@ -17,12 +20,13 @@ import { SchedulerColumn, SchedulerRow } from '../../models/scheduler-table.mode
 export class SchedulerColumnComponent implements OnInit {
   @Input() column: SchedulerColumn;
   @Output() selectedRow = new EventEmitter<SchedulerRow>();
+  rows: SchedulerRow<IRepetition>[];
   isToday: boolean;
   constructor() {}
 
   ngOnInit() {
     this.isToday = this.column.date
-      ? this.column.date.toDateString() === new Date().toDateString()
+      ? new Date(this.column.date).toDateString() === new Date().toDateString()
       : false;
   }
   selectRow(row: SchedulerRow) {

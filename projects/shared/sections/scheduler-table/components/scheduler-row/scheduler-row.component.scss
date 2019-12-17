@@ -11,10 +11,9 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s ease;
-    cursor: pointer;
+
     &:hover {
-      background-color: $light-shade;
-      .scheduler-row__image {
+      .scheduler-row__image--open {
         transform: rotate(7deg);
       }
     }
@@ -25,5 +24,13 @@
   .scheduler-row__image {
     height: 50px;
     transition: 0.3s ease-in-out;
+    &--open {
+      cursor: pointer;
+      &:hover {
+        .scheduler-row {
+          background-color: $light-shade;
+        }
+      }
+    }
   }
 }

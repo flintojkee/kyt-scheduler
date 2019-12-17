@@ -4,10 +4,12 @@ import {
   ChangeDetectionStrategy,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  OnChanges,
+  ChangeDetectorRef
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { SchedulerTable, SchedulerRow } from '../../models/scheduler-table.model';
+import { Observable, Scheduler } from 'rxjs';
+import { SchedulerTable, SchedulerRow, SchedulerColumn } from '../../models/scheduler-table.model';
 
 @Component({
   selector: 'kyt-scheduler-table',
@@ -18,6 +20,7 @@ import { SchedulerTable, SchedulerRow } from '../../models/scheduler-table.model
 export class SchedulerTableComponent implements OnInit {
   @Input() table: SchedulerTable;
   @Output() selectedRow = new EventEmitter<SchedulerRow>();
+  columns: SchedulerColumn[];
   constructor() {}
 
   ngOnInit() {}

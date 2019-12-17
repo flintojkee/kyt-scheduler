@@ -1,6 +1,11 @@
 import { IUser } from './user.model';
 import { IAdmin } from './admin.model';
-
+export enum RepetitionStatus {
+  open = 0,
+  approved = 1,
+  declined = 2,
+  inProgress = 3
+}
 export interface IRepetition {
   room_number: number;
   date: Date;
@@ -9,7 +14,7 @@ export interface IRepetition {
   end_time: Date | string;
   admin_id: number;
   number_of_people: number;
-  approved: boolean;
+  approved: RepetitionStatus;
   user?: IUser;
   admin?: IAdmin;
 }
