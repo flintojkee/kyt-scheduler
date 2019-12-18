@@ -4,6 +4,7 @@ import { AuthStoreService } from '@kyt-user/auth/services/store/auth-store.servi
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { IUser } from '@kyt/shared/models';
 import { AuthService } from '@kyt-user/auth/services/api/auth.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'kyt-user-telegram-login-widget',
@@ -33,7 +34,6 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     window['loginViaTelegram'] = (loginData) => this.loginViaTelegram(loginData);
   }
-  ngOnDestroy() {}
   private loginViaTelegram(loginData: TelegramLoginData) {
     this.ngZone.run(() => {
       const { last_name, first_name, id, username, photo_url } = loginData;
@@ -41,7 +41,7 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
       this.authStoreService.dispatchUser(user);
       this.authService
         .login(loginData)
-        .pipe(untilDestroyed(this))
+        .pipe(take(1))
         .subscribe((res) => console.log(res));
       this.router.navigate(['home']);
     });
