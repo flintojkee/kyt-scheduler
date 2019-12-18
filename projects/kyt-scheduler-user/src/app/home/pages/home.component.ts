@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         const repetitions = res.data.repetitions.filter(
           (r) => r.approved !== RepetitionStatus.declined
         );
-        console.log(res);
         repetitions.map((r) => {
           this.homeStoreService.dispatchSchedulerRowData(r);
         });
@@ -65,9 +64,8 @@ export class HomeComponent implements OnInit, OnDestroy {
           switchMap((r) => this.homeService.updateRepetition(r.data, +this.user.user_id)),
           untilDestroyed(this)
         )
-        .subscribe((res) => {
-          console.log(res);
-          //this.homeStoreService.dispatchSchedulerRow(r);
+        .subscribe(({ data }) => {
+          this.homeStoreService.dispatchSchedulerRowData(data.repetition);
         });
     }
   }

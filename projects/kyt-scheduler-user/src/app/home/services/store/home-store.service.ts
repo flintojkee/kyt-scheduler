@@ -46,7 +46,6 @@ export class HomeStoreService {
                 repetition_date: new Date(data.repetition_date)
               }
             };
-            console.log(row);
             c.rows.splice(index, 1, row);
           }
         });
