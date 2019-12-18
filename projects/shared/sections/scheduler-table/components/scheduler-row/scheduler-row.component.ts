@@ -26,8 +26,8 @@ export class SchedulerRowComponent implements OnInit {
 
   ngOnInit() {
     this.isOdd = this.row.id % 2 !== 0;
-    if (this.row.data.date) {
-      this.isPast = this.row.data.date < new Date();
+    if (this.row.data.repetition_date) {
+      this.isPast = new Date(this.row.data.repetition_date) < new Date();
     }
   }
   select(row: SchedulerRow) {

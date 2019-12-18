@@ -5,11 +5,10 @@
 >
   <h4 *ngIf="columnId === -1">{{ row.data.start_time }} - {{ row.data.end_time }}</h4>
   <div class="scheduler-row__content fw" *ngIf="columnId !== -1">
-    <ng-container [ngSwitch]="row.data.approved">
+    <div [ngSwitch]="row.data.approved" (click)="select(row)">
       <img
         *ngSwitchCase="repetitionStatus.open"
         class="scheduler-row__image scheduler-row__image--open"
-        (click)="select(row)"
         src="assets/images/open.svg"
         alt="open for enroll"
         title="Enroll"
@@ -28,6 +27,6 @@
         alt="Closed"
         title="Closed"
       />
-    </ng-container>
+    </div>
   </div>
 </div>

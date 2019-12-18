@@ -7,24 +7,26 @@ import {
   ElementRef
 } from '@angular/core';
 import { BasePopupComponent } from '@kyt/shared/utils';
-import { AdminPopup } from '..';
-import { UserPopupService } from '@kyt-user/home/modules/user-popup';
-const popups = {};
+import { AdminPopup, AdminPopupService } from '..';
+import { RepetitionEditPopupComponent } from '../popups';
+const popups = {
+  'repetition-edit': RepetitionEditPopupComponent
+};
 
 @Component({
   selector: 'kyt-admin-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss'],
-  entryComponents: []
+  entryComponents: [RepetitionEditPopupComponent]
 })
 export class PopupComponent extends BasePopupComponent<AdminPopup> {
-  @ViewChild('userPopupContainer', { read: ViewContainerRef, static: true }) container: any;
+  @ViewChild('popupContainer', { read: ViewContainerRef, static: true }) container: any;
   constructor(
     resolver: ComponentFactoryResolver,
-    userPopupService: UserPopupService,
+    adminPopupService: AdminPopupService,
     elementRef: ElementRef
   ) {
-    super(resolver, userPopupService, elementRef, popups);
+    super(resolver, adminPopupService, elementRef, popups);
     super.showPopup();
   }
 }

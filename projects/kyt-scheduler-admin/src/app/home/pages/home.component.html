@@ -1,6 +1,4 @@
 <ng-container *ngIf="table$ | async as table">
-  <kyt-scheduler-table
-    (selectedRow)="showEnrollPopup($event)"
-    [table]="table"
-  ></kyt-scheduler-table>
+  <kyt-scheduler-table (selectedRow)="showEditPopup($event)" [table]="table"></kyt-scheduler-table>
 </ng-container>
+<kyt-admin-popup></kyt-admin-popup>

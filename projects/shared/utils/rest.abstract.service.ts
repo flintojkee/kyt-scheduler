@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 export abstract class RestService {
-  protected baseUrl = 'environment.apiUrl';
+  protected baseUrl = 'https://kut-scheduler-api.herokuapp.com/api/v1/';
   constructor(protected http: HttpClient) {}
 
   protected get<R>(relativeUrl: string): Observable<R> {

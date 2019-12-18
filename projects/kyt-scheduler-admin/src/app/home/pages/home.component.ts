@@ -3,6 +3,8 @@ import { Observable, of } from 'rxjs';
 import { SchedulerTable, SchedulerRow } from '@kyt/shared/sections/scheduler-table';
 import { IRepetition, RepetitionStatus } from '@kyt/shared/models';
 import { HomeStoreService } from '../services/store/home-store.service';
+import { AdminPopupService } from '../modules/admin-popup';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'kyt-admin-home',
@@ -12,7 +14,10 @@ import { HomeStoreService } from '../services/store/home-store.service';
 export class HomeComponent implements OnInit {
   table$: Observable<SchedulerTable<IRepetition>>;
 
-  constructor(private homeStoreService: HomeStoreService) {}
+  constructor(
+    private homeStoreService: HomeStoreService,
+    private adminPopupService: AdminPopupService
+  ) {}
 
   ngOnInit() {
     this.table$ = this.homeStoreService.getSchedulerState();
@@ -20,7 +25,7 @@ export class HomeComponent implements OnInit {
       id: 2,
       title: '09:30-10:00',
       data: {
-        date: new Date('Thu Dec 19 2019 09:30:05'),
+        repetition_date: new Date('Thu Dec 19 2019 09:30:05'),
         room_number: 1,
         start_time: '09:30',
         end_time: '10:00',
@@ -31,7 +36,12 @@ export class HomeComponent implements OnInit {
     this.homeStoreService.dispatchSchedulerRow(row);
   }
 
-  showEnrollPopup(row: SchedulerRow) {
-    console.log(row);
+  showEditPopup(row: SchedulerRow) {
+    this.adminPopupService
+      .showPopup(['repetition-edit', row.data])
+      .pipe(take(1))
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

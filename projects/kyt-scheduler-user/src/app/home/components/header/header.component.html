@@ -1,13 +1,7 @@
 <div class="header">
   <div class="container">
     <div class="header__wrapper fw">
-      <img
-        src="/assets/images/logo.svg"
-        [routerLink]="['/albums']"
-        routerLinkActive="router-link-active"
-        alt="KYT Logotype"
-        class="header__logotype"
-      />
+      <img src="/assets/images/logo.svg" alt="KYT Logotype" class="header__logotype" />
       <div class="header__profile">
         <kyt-dropdown-menu [toggleRef]="toggleRef" [contentRef]="contentRef"></kyt-dropdown-menu>
         <ng-template #toggleRef>

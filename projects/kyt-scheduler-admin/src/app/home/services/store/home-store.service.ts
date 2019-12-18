@@ -34,7 +34,8 @@ export class HomeStoreService {
       if (c.id !== -1) {
         c.rows.map((r, index) => {
           if (
-            new Date(r.data.date).toDateString() === new Date(row.data.date).toDateString() &&
+            new Date(r.data.repetition_date).toDateString() ===
+              new Date(row.data.repetition_date).toDateString() &&
             r.data.start_time === row.data.start_time &&
             r.data.end_time === row.data.end_time
           ) {
@@ -51,33 +52,6 @@ export class HomeStoreService {
     return this.stateService.state$.pipe(
       map((s) => {
         return s['scheduler'];
-      })
-    );
-  }
-
-  initUser() {
-    if (Object.keys(this.stateService.state).indexOf('user') === -1) {
-      const user: IUser = {
-        user_id: 343561467,
-        first_name: 'Denys',
-        last_name: 'Vasylenko',
-        username: 'flintojkee',
-        photo_url: 'https://t.me/i/userpic/320/Mo-wVDly9r8BKl7yBK0EmKseU3gGBlReuKN091gFq8o.jpg'
-      };
-      this.dispatchUser(user);
-    }
-  }
-  dispatchUser(user: IUser) {
-    this.stateService.dispatch({
-      key: 'user',
-      payload: { ...user }
-    });
-  }
-  getUserState(): Observable<IUser> {
-    this.initUser();
-    return this.stateService.state$.pipe(
-      map((s) => {
-        return s['user'];
       })
     );
   }

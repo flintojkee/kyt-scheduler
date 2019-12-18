@@ -124,11 +124,12 @@ export class SchedulerService {
         id: index,
         title: row.title,
         data: {
-          date,
+          repetition_date: date,
           room_number: roomNumber,
           start_time: row.title.split('-')[0],
           end_time: row.title.split('-')[1],
-          approved: RepetitionStatus.open
+          approved: RepetitionStatus.open,
+          number_of_people: 1
         }
       };
       rows.push(r);

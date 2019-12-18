@@ -28,16 +28,25 @@ export class HomeStoreService {
       payload: { ...scheduler }
     });
   }
-  dispatchSchedulerRow(row: SchedulerRow<IRepetition>) {
+  dispatchSchedulerRowData(data: IRepetition) {
     const scheduler: SchedulerTable<IRepetition> = this.stateService.state['scheduler'];
     scheduler.columns.map((c) => {
       if (c.id !== -1) {
         c.rows.map((r, index) => {
           if (
-            new Date(r.data.date).toDateString() === new Date(row.data.date).toDateString() &&
-            r.data.start_time === row.data.start_time &&
-            r.data.end_time === row.data.end_time
+            new Date(r.data.repetition_date).toDateString() ===
+              new Date(data.repetition_date).toDateString() &&
+            r.data.start_time === data.start_time &&
+            r.data.end_time === data.end_time
           ) {
+            const row: SchedulerRow<IRepetition> = {
+              ...r,
+              data: {
+                ...data,
+                repetition_date: new Date(data.repetition_date)
+              }
+            };
+            console.log(row);
             c.rows.splice(index, 1, row);
           }
         });

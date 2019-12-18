@@ -1,0 +1,16 @@
+<kyt-popup-core [closable]="true" (popupClose)="closePopup()">
+  <h3 popup-header>Edit repetition</h3>
+  <div class="repetition-edit-popup__body" popup-body>
+    {{ inputData | json }}
+  </div>
+  <div class="repetition-edit-popup__footer" popup-footer>
+    <div class="repetition-edit-popup__buttons-wrapper fw">
+      <div class="repetition-edit-popup__button-wrapper">
+        <kyt-button (clicked)="closePopup()">Cancel</kyt-button>
+      </div>
+      <div class="repetition-edit-popup__button-wrapper">
+        <kyt-button (clicked)="submitPopup()" [color]="'primary'">Submit</kyt-button>
+      </div>
+    </div>
+  </div>
+</kyt-popup-core>

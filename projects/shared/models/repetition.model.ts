@@ -8,7 +8,7 @@ export enum RepetitionStatus {
 }
 export interface IRepetition {
   room_number: number;
-  date: Date;
+  repetition_date: Date;
   user_id?: number;
   start_time: Date | string;
   end_time: Date | string;

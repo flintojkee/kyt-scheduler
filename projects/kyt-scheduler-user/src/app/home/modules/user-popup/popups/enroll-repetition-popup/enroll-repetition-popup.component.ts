@@ -21,7 +21,7 @@ export class EnrollRepetitionPopupComponent implements OnInit {
     const repetition = {
       ...this.inputData.row,
       user_id: this.inputData.user.user_id,
-      data: { ...this.inputData.row.data, approved: RepetitionStatus.approved },
+      data: { ...this.inputData.row.data, approved: RepetitionStatus.review },
       number_of_people: '3'
     };
     this.userPopupService.closePopup(repetition);
