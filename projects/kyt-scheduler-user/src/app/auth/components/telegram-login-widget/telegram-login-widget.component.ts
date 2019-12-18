@@ -33,6 +33,7 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     window['loginViaTelegram'] = (loginData) => this.loginViaTelegram(loginData);
   }
+  ngOnDestroy() {}
   private loginViaTelegram(loginData: TelegramLoginData) {
     this.ngZone.run(() => {
       const { last_name, first_name, id, username, photo_url } = loginData;
