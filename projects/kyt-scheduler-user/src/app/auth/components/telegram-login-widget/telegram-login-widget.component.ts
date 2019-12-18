@@ -20,18 +20,9 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
   convertToScript() {
     const element = this.script.nativeElement;
     const script = document.createElement('script');
-    script.src = 'https://telegram.org/js/telegram-widget.js?5';
+    script.src = 'https://telegram.org/js/telegram-widget.js?7';
     script.setAttribute('data-telegram-login', 'KutSchedulerBot');
     script.setAttribute('data-size', 'large');
-    <script
-      async
-      src="https://telegram.org/js/telegram-widget.js?7"
-      data-telegram-login="KutSchedulerBot"
-      data-size="large"
-      data-onauth="onTelegramAuth(user)"
-      data-request-access="write"
-    ></script>;
-
     // Callback function in global scope
     script.setAttribute('data-onauth', 'loginViaTelegram(user)');
     script.setAttribute('data-request-access', 'write');
