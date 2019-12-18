@@ -6,6 +6,7 @@ import { HomeStoreService } from '../services/store/home-store.service';
 import { UserPopupService } from '../modules/user-popup';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { take } from 'rxjs/operators';
+import { AuthStoreService } from '@kyt-user/auth/services/store/auth-store.service';
 
 @Component({
   selector: 'kyt-user-home',
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeStoreService: HomeStoreService,
-    private userPopupService: UserPopupService
+    private userPopupService: UserPopupService,
+    private authStoreService: AuthStoreService
   ) {}
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.homeStoreService
+    this.authStoreService
       .getUserState()
       .pipe(untilDestroyed(this))
       .subscribe((user) => {

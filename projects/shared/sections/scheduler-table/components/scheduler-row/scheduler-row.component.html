@@ -1,4 +1,8 @@
-<div class="scheduler-row fw" [class.scheduler-row__odd]="isOdd">
+<div
+  class="scheduler-row fw"
+  [class.scheduler-row--odd]="isOdd"
+  [class.scheduler-row--disabled]="isPast"
+>
   <h4 *ngIf="columnId === -1">{{ row.data.start_time }} - {{ row.data.end_time }}</h4>
   <div class="scheduler-row__content fw" *ngIf="columnId !== -1">
     <ng-container [ngSwitch]="row.data.approved">
@@ -11,8 +15,8 @@
         title="Enroll"
       />
       <img
-        *ngSwitchCase="repetitionStatus.inProgress"
-        class="scheduler-row__image"
+        *ngSwitchCase="repetitionStatus.review"
+        class="scheduler-row__image scheduler-row__image--review"
         src="assets/images/review.svg"
         alt="open for enroll"
         title="In progress"

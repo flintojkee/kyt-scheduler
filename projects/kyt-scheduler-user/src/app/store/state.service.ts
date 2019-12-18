@@ -20,7 +20,7 @@ export class StateService {
     return this._state.value;
   }
   private initialState: StateObject = {
-    app: 'Kyt scheduler admin'
+    app: 'Kyt scheduler user'
   };
 
   private _state$ = this.stateSubject.asObservable().pipe(

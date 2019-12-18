@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SchedulerService } from './scheduler.service';
+import { AdminPopupService } from './admin-popup.service';
 
-describe('SchedulerService', () => {
+describe('AdminPopupService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SchedulerService = TestBed.get(SchedulerService);
+    const service: AdminPopupService = TestBed.get(AdminPopupService);
     expect(service).toBeTruthy();
   });
 });

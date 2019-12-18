@@ -115,11 +115,16 @@ export class SchedulerService {
   getEmptySchedulerRaws(column: SchedulerColumn, roomNumber: number) {
     const rows = [];
     this.schedulerRows.map((row, index) => {
+      const date = new Date(column.date);
+      if (date) {
+        date.setHours(+row.title.split('-')[0].split(':')[0]);
+        date.setMinutes(+row.title.split('-')[0].split(':')[1]);
+      }
       const r = {
         id: index,
         title: row.title,
         data: {
-          date: column.date,
+          date,
           room_number: roomNumber,
           start_time: row.title.split('-')[0],
           end_time: row.title.split('-')[1],

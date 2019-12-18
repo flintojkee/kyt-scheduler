@@ -1,4 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthStoreService } from '@kyt-user/auth/services/store/auth-store.service';
+import { untilDestroyed } from 'ngx-take-until-destroy';
+import { IUser } from '@kyt/shared/models';
 
 @Component({
   selector: 'kyt-user-telegram-login-widget',
@@ -6,7 +10,11 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, NgZone } from 
   styleUrls: ['./telegram-login-widget.component.scss']
 })
 export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone,
+    private router: Router,
+    private authStoreService: AuthStoreService
+  ) {}
   @ViewChild('script', { static: true }) script: ElementRef;
 
   convertToScript() {
@@ -15,6 +23,15 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
     script.src = 'https://telegram.org/js/telegram-widget.js?5';
     script.setAttribute('data-telegram-login', 'KutSchedulerBot');
     script.setAttribute('data-size', 'large');
+    <script
+      async
+      src="https://telegram.org/js/telegram-widget.js?7"
+      data-telegram-login="KutSchedulerBot"
+      data-size="large"
+      data-onauth="onTelegramAuth(user)"
+      data-request-access="write"
+    ></script>;
+
     // Callback function in global scope
     script.setAttribute('data-onauth', 'loginViaTelegram(user)');
     script.setAttribute('data-request-access', 'write');
@@ -24,7 +41,12 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
     window['loginViaTelegram'] = (loginData) => this.loginViaTelegram(loginData);
   }
   private loginViaTelegram(loginData: TelegramLoginData) {
-    this.ngZone.run(() => console.log(loginData));
+    this.ngZone.run(() => {
+      const { last_name, first_name, id, username, photo_url } = loginData;
+      const user: IUser = { last_name, first_name, user_id: id, username, photo_url };
+      this.authStoreService.dispatchUser(user);
+      this.router.navigate(['home']);
+    });
   }
   ngAfterViewInit() {
     this.convertToScript();

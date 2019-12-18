@@ -20,13 +20,19 @@ export class SchedulerRowComponent implements OnInit {
   @Input() columnId: number;
   @Output() selected = new EventEmitter<SchedulerRow>();
   isOdd: boolean;
+  isPast: boolean;
   repetitionStatus = RepetitionStatus;
   constructor() {}
 
   ngOnInit() {
     this.isOdd = this.row.id % 2 !== 0;
+    if (this.row.data.date) {
+      this.isPast = this.row.data.date < new Date();
+    }
   }
   select(row: SchedulerRow) {
-    this.selected.emit(row);
+    if (!this.isPast) {
+      this.selected.emit(row);
+    }
   }
 }
