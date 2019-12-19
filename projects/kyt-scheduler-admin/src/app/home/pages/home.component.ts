@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SchedulerTable, SchedulerRow } from '@kyt/shared/sections/scheduler-table';
-import { IRepetition, RepetitionStatus, IUser } from '@kyt/shared/models';
+import { IRepetition, RepetitionStatus, IUser, IAdmin } from '@kyt/shared/models';
 import { HomeStoreService } from '../services/store/home-store.service';
 import { AdminPopupService } from '../modules/admin-popup';
 import { take, switchMap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   table: SchedulerTable<IRepetition>;
-  user: IUser;
+  user: IAdmin;
   constructor(
     private homeStoreService: HomeStoreService,
     private adminPopupService: AdminPopupService,
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   showEditPopup(row: SchedulerRow<IRepetition>) {
     if (row.data.approved !== RepetitionStatus.open) {
       this.adminPopupService
-        .showPopup(['repetition-edit', row.data])
+        .showPopup(['repetition-edit', { repetition: row.data, admin: this.user }])
         .pipe(
           take(1),
           switchMap((popupAnswer: any) => this.homeService.updateRepetition(popupAnswer))

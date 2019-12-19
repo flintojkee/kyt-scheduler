@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { PopupService } from '@kyt/shared/utils';
-import { IRepetition } from '@kyt/shared/models';
+import { RepetitionEditData } from '../popups';
 
-export type AdminPopup = ['repetition-edit', IRepetition];
+export type AdminPopup = ['repetition-edit', RepetitionEditData];
 @Injectable({
   providedIn: 'root'
 })

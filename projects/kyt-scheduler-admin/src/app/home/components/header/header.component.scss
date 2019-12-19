@@ -1,0 +1,82 @@
+/*Header Styles*/
+
+.header {
+  padding: 25px 0;
+  background: #fcfcfc;
+  border-bottom: 1px solid #eae9e9;
+  &__wrapper {
+    align-items: center;
+    h2 {
+      margin: 0;
+    }
+  }
+  &__logotype {
+    width: 42px;
+    outline: none;
+    cursor: pointer;
+  }
+  &__profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    &-headline {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: 200ms linear;
+    }
+    &-headline:hover {
+      opacity: 0.85;
+    }
+    &-avatar {
+      margin-right: 10px;
+      &--small {
+        width: 45px;
+      }
+      &-image {
+        display: block;
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    &-menu {
+      padding: 15px 25px;
+      min-width: 225px;
+      &-header {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eae9e9;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: flex;
+        transition: 200ms linear;
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+      &-photo-button {
+        font-size: 0.8125rem;
+        color: #009688;
+        cursor: pointer;
+        transition: 200ms linear;
+        &:hover {
+          color: #00554d;
+        }
+      }
+      &-links-list {
+        display: flex;
+        flex-direction: column;
+      }
+      &-link {
+        text-decoration: none;
+        color: #333333;
+        font-size: 1rem;
+        padding: 7px 0;
+        transition: 200ms linear;
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+}

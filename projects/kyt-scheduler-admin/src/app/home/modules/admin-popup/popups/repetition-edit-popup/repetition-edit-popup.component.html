@@ -1,7 +1,15 @@
 <kyt-popup-core [closable]="true" (popupClose)="closePopup()">
   <h3 popup-header>Edit repetition</h3>
   <div class="repetition-edit-popup__body" popup-body>
-    {{ inputData | json }}
+    <p>Room: №{{ inputData.repetition.room_number }}</p>
+    <p>Time: {{ inputData.repetition.start_time }} - {{ inputData.repetition.end_time }}</p>
+    <ng-container *ngIf="user$ | async as user">
+      <p>User:</p>
+      <div class="user fw">
+        <img [src]="user.photo_url" alt="user image" />
+        <p>{{ user.first_name }} {{ user.last_name }}</p>
+      </div>
+    </ng-container>
   </div>
   <div class="repetition-edit-popup__footer" popup-footer>
     <div class="repetition-edit-popup__buttons-wrapper fw">

@@ -1,13 +1,12 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthStoreService } from '@kyt-user/auth/services/store/auth-store.service';
-import { untilDestroyed } from 'ngx-take-until-destroy';
-import { IUser } from '@kyt/shared/models';
-import { AuthService } from '@kyt-user/auth/services/api/auth.service';
 import { take } from 'rxjs/operators';
+import { AuthStoreService } from '@kyt-admin/auth/services/store/auth-store.service';
+import { AuthService } from '@kyt-admin/auth/services/api/auth.service';
+import { IAdmin } from '@kyt/shared/models';
 
 @Component({
-  selector: 'kyt-user-telegram-login-widget',
+  selector: 'kyt-admin-telegram-login-widget',
   templateUrl: './telegram-login-widget.component.html',
   styleUrls: ['./telegram-login-widget.component.scss']
 })
@@ -24,7 +23,7 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
     const element = this.script.nativeElement;
     const script = document.createElement('script');
     script.src = 'https://telegram.org/js/telegram-widget.js?7';
-    script.setAttribute('data-telegram-login', 'KutSchedulerBot');
+    script.setAttribute('data-telegram-login', 'KutAdminBot');
     script.setAttribute('data-size', 'large');
     // Callback function in global scope
     script.setAttribute('data-onauth', 'loginViaTelegram(user)');
@@ -37,7 +36,7 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
   private loginViaTelegram(loginData: TelegramLoginData) {
     this.ngZone.run(() => {
       const { last_name, first_name, id, username, photo_url } = loginData;
-      const user: IUser = { last_name, first_name, user_id: id, username, photo_url };
+      const user: IAdmin = { last_name, first_name, admin_id: id, username, photo_url };
       this.authStoreService.dispatchUser(user);
       this.authService
         .login(loginData)

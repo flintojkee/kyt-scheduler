@@ -11,6 +11,6 @@ export class AuthService extends RestService {
   }
 
   login(data) {
-    return this.post('user/login', data);
+    return this.post('admin/login', data);
   }
 }

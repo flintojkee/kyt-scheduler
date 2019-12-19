@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestService } from '@kyt/shared/utils';
 import { HttpClient } from '@angular/common/http';
 import { IRepetition } from '@kyt/shared/models';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,8 @@ export class HomeService extends RestService {
   }
   getRepetitions() {
     return this.get('repetition/');
+  }
+  getUser(id: number) {
+    return this.get('user/' + id).pipe(map((res: any) => res.data.user));
   }
 }
