@@ -16,7 +16,7 @@ export class AuthStoreService {
     });
   }
   initUser() {
-    if (Object.keys(this.stateService.state).indexOf('user') === -1) {
+    if (Object.keys(this.stateService.state).indexOf('admin') === -1) {
       const user: IAdmin = {
         admin_id: '343561467',
         first_name: 'Denys',
