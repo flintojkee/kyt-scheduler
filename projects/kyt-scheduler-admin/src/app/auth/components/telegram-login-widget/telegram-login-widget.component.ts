@@ -37,12 +37,16 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
     this.ngZone.run(() => {
       const { last_name, first_name, id, username, photo_url } = loginData;
       const user: IAdmin = { last_name, first_name, admin_id: id, username, photo_url };
-      this.authStoreService.dispatchUser(user);
       this.authService
         .login(loginData)
         .pipe(take(1))
-        .subscribe((res) => console.log(res));
-      this.router.navigate(['home']);
+        .subscribe((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            this.authStoreService.dispatchUser(user);
+            this.router.navigate(['home']);
+          }
+        });
     });
   }
   ngAfterViewInit() {
