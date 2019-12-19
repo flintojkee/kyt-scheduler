@@ -53,4 +53,32 @@
       background-color: $primary-shade;
     }
   }
+  &--secondary {
+    background-color: $secondary;
+    color: $light;
+    &:hover {
+      background-color: $secondary-shade;
+    }
+  }
+  &--success {
+    background-color: $success;
+    color: $light;
+    &:hover {
+      background-color: $success-shade;
+    }
+  }
+  &--warning {
+    background-color: $warning;
+    color: $light;
+    &:hover {
+      background-color: $warning-shade;
+    }
+  }
+  &--danger {
+    background-color: $danger;
+    color: $light;
+    &:hover {
+      background-color: $danger-shade;
+    }
+  }
 }

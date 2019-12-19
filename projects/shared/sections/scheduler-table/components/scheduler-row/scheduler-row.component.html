@@ -14,6 +14,13 @@
         title="Enroll"
       />
       <img
+        *ngSwitchCase="repetitionStatus.declined"
+        class="scheduler-row__image scheduler-row__image--open"
+        src="assets/images/open.svg"
+        alt="open for enroll"
+        title="Enroll"
+      />
+      <img
         *ngSwitchCase="repetitionStatus.review"
         class="scheduler-row__image scheduler-row__image--review"
         src="assets/images/review.svg"

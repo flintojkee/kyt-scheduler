@@ -10,11 +10,12 @@ export interface IRepetition {
   room_number: number;
   repetition_date: Date;
   user_id?: number;
-  start_time: Date | string;
-  end_time: Date | string;
+  start_time: string;
+  end_time: string;
   admin_id?: number;
   number_of_people?: number;
   approved: RepetitionStatus;
+  repetition_id?: number;
   user?: IUser;
   admin?: IAdmin;
 }

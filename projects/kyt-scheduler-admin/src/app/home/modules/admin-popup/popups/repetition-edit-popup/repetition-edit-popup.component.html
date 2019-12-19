@@ -8,8 +8,13 @@
       <div class="repetition-edit-popup__button-wrapper">
         <kyt-button (clicked)="closePopup()">Cancel</kyt-button>
       </div>
-      <div class="repetition-edit-popup__button-wrapper">
-        <kyt-button (clicked)="submitPopup()" [color]="'primary'">Submit</kyt-button>
+      <div class="repetition-edit-popup__buttons-wrapper fw">
+        <div class="repetition-edit-popup__button-wrapper">
+          <kyt-button (clicked)="declineRepetition()" [color]="'secondary'">Decline</kyt-button>
+        </div>
+        <div class="repetition-edit-popup__button-wrapper">
+          <kyt-button (clicked)="submitRepetition()" [color]="'primary'">Submit</kyt-button>
+        </div>
       </div>
     </div>
   </div>

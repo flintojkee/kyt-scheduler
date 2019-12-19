@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IRepetition } from '@kyt/shared/models';
+import { IRepetition, RepetitionStatus } from '@kyt/shared/models';
 import { AdminPopupService } from '../../services/admin-popup.service';
 
 @Component({
@@ -17,7 +17,16 @@ export class RepetitionEditPopupComponent implements OnInit {
   closePopup() {
     this.adminPopupService.closePopup();
   }
-  submitPopup() {
-    this.adminPopupService.closePopup();
+  declineRepetition() {
+    this.adminPopupService.closePopup({
+      repetition_id: this.inputData.repetition_id,
+      approved: RepetitionStatus.declined
+    });
+  }
+  submitRepetition() {
+    this.adminPopupService.closePopup({
+      repetition_id: this.inputData.repetition_id,
+      approved: RepetitionStatus.approved
+    });
   }
 }

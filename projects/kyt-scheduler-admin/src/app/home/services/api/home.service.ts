@@ -11,7 +11,7 @@ export class HomeService extends RestService {
     super(http);
   }
 
-  updateRepetition(
+  createRepetition(
     { room_number, repetition_date, start_time, end_time, number_of_people }: IRepetition,
     user_id: number
   ) {
@@ -27,7 +27,9 @@ export class HomeService extends RestService {
     };
     return this.post('repetition/', r);
   }
-
+  updateRepetition(data) {
+    return this.put('repetition/' + data.repetition_id, data);
+  }
   getRepetitions() {
     return this.get('repetition/');
   }

@@ -69,7 +69,7 @@ export class SchedulerService {
       title: '17:00-17:30'
     },
     {
-      title: '17:00-17:30'
+      title: '17:30-18:00'
     },
     {
       title: '18:00-18:30'
