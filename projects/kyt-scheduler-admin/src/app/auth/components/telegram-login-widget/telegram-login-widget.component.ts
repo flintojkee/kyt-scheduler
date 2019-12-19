@@ -40,10 +40,9 @@ export class TelegramLoginWidgetComponent implements OnInit, AfterViewInit {
       this.authService
         .login(loginData)
         .pipe(take(1))
-        .subscribe((res) => {
-          console.log(res);
+        .subscribe(({ data }) => {
           console.log(user);
-          if (res.status === 200) {
+          if (data.status === 200) {
             this.authStoreService.dispatchUser(user);
             this.router.navigate(['home']);
           }
